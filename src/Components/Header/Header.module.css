@@ -1,0 +1,17 @@
+.container {
+    background: black;
+    width: 1304px;
+    height: 727px;
+    display: grid;
+    grid-template-columns: 326px auto;
+}
+
+.logo {
+    height: 136px;
+    width: 326px;
+    background: #99823D;
+    display: grid;
+    margin: auto;
+    align-items: center;
+    justify-items: center;
+}
