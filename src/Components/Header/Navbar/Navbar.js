@@ -1,15 +1,12 @@
 import style from './Navbar.module.css'
 import React from 'react'
-/*import Item from './Item/item'*/
 import Slogan from './Slogan/Slogan'
 
 
-function Navbar () {
+function Navbar() {
     return (
-
-
         <div className={style.container}>
-            <Slogan />
+            <Slogan/>
             <div>
                 <a href={'/home'}>
                     HOME
@@ -40,8 +37,7 @@ function Navbar () {
                     CONTACT
                 </a>
             </div>
-                  </div>
-
+        </div>
     )
 }
 

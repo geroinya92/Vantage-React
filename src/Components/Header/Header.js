@@ -4,21 +4,15 @@ import Navbar from './Navbar/Navbar'
 import logo from './logo.png'
 import interior from './interior.png'
 
-function Header () {
+function Header() {
     return (
         <div className={style.container}>
             <div className={style.logo}>
-                <img src={logo} alt="Vantage" />
+                <img src={logo} alt="Vantage"/>
             </div>
-
-
-            <Navbar />
-            
-            <img src={interior} alt="Interior" />
-
-
+            <Navbar/>
+            <img src={interior} alt="Interior"/>
         </div>
-
     )
 }
 
