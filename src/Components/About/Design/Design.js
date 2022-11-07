@@ -1,12 +1,12 @@
-import style from './Main.module.css'
+import style from './Design.module.css'
 import React from 'react'
 
-function Main() {
+function Design () {
     return (
         <div className={style.container}>
-            Main
+            design
         </div>
     )
 }
 
-export default Main
+export default Design

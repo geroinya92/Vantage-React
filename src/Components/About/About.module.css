@@ -1,0 +1,12 @@
+.container {
+    background: antiquewhite;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px auto;
+ }
+
+.container a {
+    color: #99823D;
+}
+

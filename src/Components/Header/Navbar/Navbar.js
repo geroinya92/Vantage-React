@@ -1,41 +1,41 @@
 import style from './Navbar.module.css'
 import React from 'react'
 import Slogan from './Slogan/Slogan'
-
+import {NavLink} from "react-router-dom";
 
 function Navbar() {
     return (
         <div className={style.container}>
             <Slogan/>
             <div>
-                <a href={'/home'}>
+                <NavLink to={'/home'}>
                     HOME
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a href={'/about'}>
+                <NavLink to={'/about'}>
                     ABOUT
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a href={'/services'}>
+                <NavLink to={'/services'}>
                     SERVICES
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a href={'/projects'}>
+                <NavLink to={'/projects'}>
                     PROJECTS
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a href={'/news'}>
+                <NavLink to={'/news'}>
                     NEWS
-                </a>
+                </NavLink>
             </div>
             <div>
-                <a href={'/contact'}>
+                <NavLink to={'/contact'}>
                     CONTACT
-                </a>
+                </NavLink>
             </div>
         </div>
     )
