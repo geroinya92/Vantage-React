@@ -1,0 +1,13 @@
+.Dialogs {
+    width: 180px;
+    background: #6c675d;
+    padding: 15px 5px;
+}
+
+.Dialogs:hover  {
+    background: #4b4841;
+}
+
+a:active, a:focus, a:hover {
+    color: #cba416;
+}

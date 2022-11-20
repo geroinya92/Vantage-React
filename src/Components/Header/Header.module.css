@@ -1,12 +1,21 @@
-.container {
+.Wrapper {
     background: black;
-    width: 1304px;
-    height: 727px;
     display: grid;
-    grid-template-columns: 326px auto;
+    justify-content: center;
+    height: 726px;
 }
 
-.logo {
+.Wrapper__container {
+
+    width: 1304px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 326px auto;
+    padding: 0 68px;
+    position: static;
+}
+
+.Wrapper__container_logo {
     height: 136px;
     width: 326px;
     background: #99823D;
@@ -14,6 +23,34 @@
     margin: auto;
     align-items: center;
     justify-items: center;
+    position: absolute;
+    z-index: 1;
+}
 
+.Wrapper__container_interior {
+    position: absolute;
+    top: 68px;
+    z-index: 0;
+
+}
+.yellowBlock {
+    position: relative;
+    top: 397px;
+    background: #99823D;
+    height: 329px;
+    width: 489px;
+}
+
+.whiteBlock {
+    height: 455px;
+    width: 584px;
+    background: white;
+    position: relative;
+    top: -204px;
+    left: 652px;
+}
+
+.whiteBlock h1 {
+    font: Teko;
 
 }

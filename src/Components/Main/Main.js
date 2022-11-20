@@ -1,10 +1,15 @@
 import style from './Main.module.css'
 import React from 'react'
+import VantagePosts from "./VantagePosts/VantagePosts";
 
-function Main() {
+function Main(props) {
+
+
     return (
-        <div className={style.container}>
-            Main
+        <div className={style.Wrapper}>
+            <div className={style.container}>
+                <VantagePosts posts={props.posts} />
+            </div>
         </div>
     )
 }

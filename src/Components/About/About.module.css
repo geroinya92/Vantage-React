@@ -1,10 +1,21 @@
-.container {
-    background: antiquewhite;
-
-    width: 100%;
+.Wrapper {
+    width: 100vh;
     display: grid;
-    grid-template-columns: 200px auto;
+    justify-content: center;
+    margin: auto;
+}
+
+.container {
+    background: white;
+    width: 1304px;
+    padding: 0 68px;
+    display: grid;
  }
+
+.Sidebar {
+    background-color: #99823D;
+    width: 180px;
+}
 
 .container a {
     color: #99823D;

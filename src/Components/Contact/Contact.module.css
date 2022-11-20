@@ -1,5 +1,28 @@
-.container {
-    background: antiquewhite;
-    height: 200px;
-    width: 100%;
+.Wrapper {
+    width: 100vh;
+    display: grid;
+    justify-content: center;
+    margin: auto;
 }
+
+.container {
+    background: white;
+    width: 1304px;
+    padding: 0 68px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.Sidebar {
+    background-color: #99823D;
+    width: 180px;
+}
+
+.AllMessages {
+    display: grid;
+    justify-content: start;
+    width: 1124px;
+}
+
+
+

@@ -1,5 +1,13 @@
 
 .service {
-    background: black;
+    background: #6c675d;
+    padding: 15px 5px;
+}
 
+.service:hover  {
+    background: #4b4841;
+}
+
+a:active, a:focus, a:hover {
+    color: #cba416;
 }

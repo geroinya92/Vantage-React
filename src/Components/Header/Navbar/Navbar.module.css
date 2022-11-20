@@ -1,16 +1,29 @@
 .container {
     display: grid;
-    grid-template-columns: auto auto auto  auto auto auto auto;
-    height: 68px;
-    display: grid;
-    justify-items: center;
+    grid-template-columns: 232px 746px;
+    grid-template-rows: 68px;
     align-items: center;
+    justify-items: right;
+    margin-left: 326px;
+}
+
+.container_items {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    text-transform: uppercase;
+
+}
+
+.container_slogan {
+    padding: 26px 34px;
 }
 
 a {
     color: white;
     text-decoration: none;
+    font-weight: 400;
 }
+
 a:focus {
     color: #99823D;
 }

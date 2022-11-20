@@ -3,11 +3,12 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 
 function DialogItem(props) {
+
     return (
-        <NavLink to={props.item}>
+        <NavLink to={"/dialog/" + props.id}>
             <a>
-                <div>
-                    {props.name}
+                <div className={style.Dialogs}>
+                    {props.user}
                 </div>
             </a>
         </NavLink>

@@ -4,12 +4,13 @@ import {NavLink} from "react-router-dom";
 
 function Service(props) {
     return (
-        <div className={style.service}>
-            <NavLink to={'/about/' + props.item}>
-                {props.name}
-            </NavLink>
-        </div>
-
+        <NavLink to={props.item}>
+            <a>
+                <div className={style.service}>
+                    {props.name}
+                </div>
+            </a>
+        </NavLink>
     )
 }
 

@@ -6,13 +6,20 @@ import interior from './interior.png'
 
 function Header() {
     return (
-        <div className={style.container}>
-            <div className={style.logo}>
-                <img src={logo} alt="Vantage"/>
+        <div className={style.Wrapper}>
+            <div className={style.Wrapper__container}>
+                <div className={style.Wrapper__container_logo}>
+                    <img src={logo} alt="Vantage"/>
+                </div>
+                <Navbar/>
+                <img src={interior} className={style.Wrapper__container_interior} alt="Interior"/>
+                <div className={style.yellowBlock}/>
+                <div className={style.whiteBlock}>
+                    <h1>Your vision, our expertise!</h1>
+                </div>
             </div>
-            <Navbar/>
-            <img src={interior} alt="Interior"/>
         </div>
+
     )
 }
 
