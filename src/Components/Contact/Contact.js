@@ -5,12 +5,10 @@ import MessageItem from "./MessageItem/MessageItem";
 
 function Contact(props) {
 
-
-
-    const DialogElement = props.dialogsData
+    const DialogElement = props.Data.dialogsData
         .map(dialog => <DialogItem user={dialog.user} id={dialog.id}/>)
 
-    const messagesElements = props.messagesData
+    const messagesElements = props.Data.messagesData
         .map(message => <MessageItem message={message.message} id={message.id}/>);
 
     return (

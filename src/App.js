@@ -7,8 +7,6 @@ import About from "./Components/About/About";
 
 function App(props) {
 
-
-
     return (
         <BrowserRouter>
             <div>
@@ -16,11 +14,11 @@ function App(props) {
             </div>
             <div>
                 <Routes>
-                    <Route exact path='/home' element={<Main posts={props.posts}/>}/>
-                    <Route path='/contact' element={<Contact dialogsData={props.dialogsData} messagesData={props.messagesData} />}/>
+                    <Route exact path='/home' element={<Main posts={props.state.Main.newsData}/>}/>
+                    <Route path='/contact'
+                           element={<Contact Data={props.state.Contacts}/>}/>
                     <Route path='/about' element={<About/>}/>
                 </Routes>
-
             </div>
         </BrowserRouter>
     );
