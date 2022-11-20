@@ -1,0 +1,26 @@
+.container {
+
+
+    width: 100%;
+}
+
+.post {
+    margin: 20px;
+    background: #99823D;
+}
+
+.post_text {
+
+    color: white;
+    margin: 20px;
+
+}
+.post_likes {
+    font-size: small;
+    margin-left: 30px;
+
+}
+
+h1 {
+    margin: 20px;
+}
