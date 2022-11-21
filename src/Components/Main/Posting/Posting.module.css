@@ -1,0 +1,15 @@
+.Container {
+    padding: 40px;
+    display: grid;
+    justify-items: start;
+    gap: 15px;
+}
+
+.TextField {
+    margin: 20px 0;
+    width: 300px;
+}
+
+.Button {
+    width: 40px;
+}

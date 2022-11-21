@@ -14,9 +14,16 @@ function App(props) {
             </div>
             <div>
                 <Routes>
-                    <Route exact path='/home' element={<Main posts={props.state.Main.newsData}/>}/>
+                    <Route exact path='/home' element={<Main
+                        posts={props.state.Main.newsData}
+                        AddPost={props.AddPost}
+                    />
+                    }
+                    />
                     <Route path='/contact'
-                           element={<Contact Data={props.state.Contacts}/>}/>
+                           element={<Contact
+                               Data={props.state.Contacts}
+                               SendMessage={props.SendMessage}/>}/>
                     <Route path='/about' element={<About/>}/>
                 </Routes>
             </div>

@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../Render";
+
 const state = {
     Contacts: {
         dialogsData: [
@@ -8,7 +10,7 @@ const state = {
             {id: 5, user: 'John',},
         ],
         messagesData: [
-            {id: 1, message: 'Hello!'},
+            {id: 1, message: 'Hello!', },
             {id: 2, message: 'How are you?'},
             {id: 3, message: 'My name is Mary!'},
             {id: 4, message: 'What about meeting?!'},
@@ -34,6 +36,26 @@ const state = {
             },
         ],
     },
+}
+
+export function AddPost (Post) {
+        const newPost = {
+        id: 5,
+        text: Post,
+        likesCount: 0,
+    };
+
+  state.Main.newsData.push(newPost);
+  rerenderEntireTree(state)
+}
+
+export function SendMessage (Message) {
+    const newMessage = {
+        id: 6,
+        message: Message,
+    };
+    state.Contacts.messagesData.push(newMessage)
+    rerenderEntireTree(state)
 }
 
 export default state

@@ -2,6 +2,7 @@ import style from './Contact.module.css'
 import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
+import {Button, TextareaAutosize} from "@mui/material";
 
 function Contact(props) {
 
@@ -11,6 +12,14 @@ function Contact(props) {
     const messagesElements = props.Data.messagesData
         .map(message => <MessageItem message={message.message} id={message.id}/>);
 
+    const newMessage = React.createRef();
+
+    function CreateMessage() {
+
+        const text = newMessage.current.value;
+        props.SendMessage (text);
+    }
+
     return (
         <div className={style.Wrapper}>
             <div className={style.container}>
@@ -19,7 +28,23 @@ function Contact(props) {
                 </div>
                 <div className={style.AllMessages}>
                     {messagesElements}
+                    <div className={style.CreateMessage}>
+                        <TextareaAutosize
+                            ref={newMessage}
+                            aria-label="empty textarea"
+                            placeholder="Start typing the message"
+                            style={{height: 50}}
+                        />
+                        <Button
+                            variant="contained"
+                            style={{width: 80}}
+                            onClick={CreateMessage}
+                        >
+                            Send
+                        </Button>
+                    </div>
                 </div>
+
 
             </div>
         </div>

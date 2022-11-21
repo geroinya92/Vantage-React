@@ -24,5 +24,11 @@
     width: 1124px;
 }
 
+.CreateMessage {
+    margin: 15px;
+    width: 360;
+    display: grid;
+    gap: 15px
+}
 
 
