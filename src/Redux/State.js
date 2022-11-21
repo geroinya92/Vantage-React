@@ -35,6 +35,7 @@ const state = {
                 likesCount: 3,
             },
         ],
+        newPostText: 'Vantage',
     },
 }
 
@@ -47,6 +48,11 @@ export function AddPost (Post) {
 
   state.Main.newsData.push(newPost);
   rerenderEntireTree(state)
+}
+
+export function updateNewPostText(newText) {
+    state.Main.newPostText = newText;
+    rerenderEntireTree(state)
 }
 
 export function SendMessage (Message) {

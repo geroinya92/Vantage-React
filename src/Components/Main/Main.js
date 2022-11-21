@@ -9,7 +9,11 @@ function Main(props) {
     return (
         <div className={style.Wrapper}>
             <div className={style.container}>
-                <Posting AddPost={props.AddPost}/>
+                <Posting
+                    AddPost={props.AddPost}
+                    newPostText={props.newPostText}
+                    updateNewPostText={props.updateNewPostText}
+                />
                 <VantagePosts posts={props.posts} />
             </div>
         </div>

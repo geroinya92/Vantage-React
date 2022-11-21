@@ -1,5 +1,5 @@
 import React from 'react'
-import {TextField, Button} from "@mui/material";
+import {Button, TextareaAutosize} from "@mui/material";
 import style from './Posting.module.css'
 
 function Posting(props) {
@@ -9,18 +9,25 @@ function Posting(props) {
     function AddPost() {
 
         const text = newPostElement.current.value;
-                props.AddPost(text)
+        props.AddPost(text)
         newPostElement.current.value = '';
+    }
+
+    function onPostChange() {
+        const text = newPostElement.current.value;
+        props.updateNewPostText(text);
     }
 
     return (
         <div className={style.Container}>
-            <TextField
+            <TextareaAutosize
+                value={props.newPostText}
                 inputRef={newPostElement}
                 className={style.TextField}
                 label="What's new?"
                 id="What"
                 rows
+                onChange={onPostChange}
             />
             <Button
                 variant="contained"
