@@ -16,6 +16,7 @@ const state = {
             {id: 4, message: 'What about meeting?!'},
             {id: 5, message: 'You very interesting!'},
         ],
+        newMessageText: 'Hello!',
     },
     Main: {
         newsData: [
@@ -53,6 +54,7 @@ export function AddPost () {
 }
 
 export function updateNewPostText(newText) {
+    debugger;
     state.Main.newPostText = newText;
     rerenderEntireTree(state)
 }
@@ -60,10 +62,17 @@ export function updateNewPostText(newText) {
 export function SendMessage (Message) {
     const newMessage = {
         id: 6,
-        message: Message,
+        message: state.Contacts.newMessageText,
     };
-    state.Contacts.messagesData.push(newMessage)
+
+    state.Contacts.messagesData.push(newMessage);
+    state.Contacts.newMessageText = '';
     rerenderEntireTree(state)
+}
+
+export function updateNewMessageText(newText) {
+    state.Contacts.newMessageText = newText;
+    rerenderEntireTree(state);
 }
 
 export default state

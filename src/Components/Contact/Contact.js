@@ -17,7 +17,12 @@ function Contact(props) {
     function CreateMessage() {
 
         const text = newMessage.current.value;
-        props.SendMessage (text);
+        props.SendMessage(text);
+    }
+
+    function onMessageChange() {
+        const text = newMessage.current.value
+        props.updateNewMessageText(text);
     }
 
     return (
@@ -31,9 +36,11 @@ function Contact(props) {
                     <div className={style.CreateMessage}>
                         <TextareaAutosize
                             ref={newMessage}
+                            value={props.newMessageText}
                             aria-label="empty textarea"
                             placeholder="Start typing the message"
                             style={{height: 50}}
+                            onChange={onMessageChange}
                         />
                         <Button
                             variant="contained"

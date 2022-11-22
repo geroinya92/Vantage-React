@@ -4,6 +4,7 @@ import Main from "./Components/Main/Main";
 import Contact from "./Components/Contact/Contact";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import About from "./Components/About/About";
+import {updateNewMessageText} from "./Redux/State";
 
 function App(props) {
 
@@ -25,7 +26,12 @@ function App(props) {
                     <Route path='/contact'
                            element={<Contact
                                Data={props.state.Contacts}
-                               SendMessage={props.SendMessage}/>}/>
+                               SendMessage={props.SendMessage}
+                               newMessageText={props.state.Contacts.newMessageText}
+                               updateNewMessageText={props.updateNewMessageText}
+                           />
+                           }
+                    />
                     <Route path='/about' element={<About/>}/>
                 </Routes>
             </div>
