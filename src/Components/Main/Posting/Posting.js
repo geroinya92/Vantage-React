@@ -9,21 +9,24 @@ function Posting(props) {
     function AddPost() {
 
         const text = newPostElement.current.value;
-        props.AddPost(text)
-        newPostElement.current.value = '';
-    }
+        props.AddPost(text);
+
+    };
 
     function onPostChange() {
         const text = newPostElement.current.value;
         props.updateNewPostText(text);
-    }
+    };
 
     return (
         <div className={style.Container}>
             <TextareaAutosize
                 value={props.newPostText}
-                inputRef={newPostElement}
-                className={style.TextField}
+                ref={newPostElement}
+                style={{
+                    width: 200,
+                    height: 50,
+                }}
                 label="What's new?"
                 id="What"
                 rows

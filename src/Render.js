@@ -4,9 +4,11 @@ import './index.css';
 import App from './App';
 import {AddPost, SendMessage, updateNewPostText} from './Redux/State'
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 export function rerenderEntireTree (state) {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
+
+       root.render(
         <React.StrictMode>
             <App
                 state={state}

@@ -38,15 +38,17 @@ const state = {
         newPostText: 'Vantage',
     },
 }
+window.state = state;
 
-export function AddPost (Post) {
+export function AddPost () {
         const newPost = {
         id: 5,
-        text: Post,
+        text: state.Main.newPostText,
         likesCount: 0,
     };
 
   state.Main.newsData.push(newPost);
+    state.Main.newPostText = '';
   rerenderEntireTree(state)
 }
 
