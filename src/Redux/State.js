@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../Render";
+let rerenderEntireTree = () => {
+console.log('state was changed!')
+};
 
 const state = {
     Contacts: {
@@ -73,6 +75,10 @@ export function SendMessage (Message) {
 export function updateNewMessageText(newText) {
     state.Contacts.newMessageText = newText;
     rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+rerenderEntireTree = observer;
 }
 
 export default state
