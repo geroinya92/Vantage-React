@@ -1,4 +1,6 @@
 let store = {
+
+    //данные
     _state: {
         Contacts: {
             dialogsData: [
@@ -9,7 +11,7 @@ let store = {
                 {id: 5, user: 'John',},
             ],
             messagesData: [
-                {id: 1, message: 'Hello!', },
+                {id: 1, message: 'Hello!',},
                 {id: 2, message: 'How are you?'},
                 {id: 3, message: 'My name is Mary!'},
                 {id: 4, message: 'What about meeting?!'},
@@ -38,29 +40,20 @@ let store = {
             newPostText: 'Vantage',
         },
     },
-    getState() {
-        return this._state;
-    },
     _callSubscriber() {
         console.log('state was changed!');
     },
-    AddPost () {
-        const newPost = {
-            id: 5,
-            text: this._state.Main.newPostText,
-            likesCount: 0,
-        };
 
-        this._state.Main.newsData.push(newPost);
-        this._state.Main.newPostText = '';
-        this._callSubscriber(this._state)
+    //общие методы
+    getState() {
+        return this._state;
     },
-    updateNewPostText(newText) {
-        debugger;
-        this._state.Main.newPostText = newText;
-        this._callSubscriber(this._state)
+    subscribe(observer) {
+        this._callSubscriber = observer;
     },
-    SendMessage (Message) {
+
+    //переписка
+    SendMessage(Message) {
         const newMessage = {
             id: 6,
             message: this._state.Contacts.newMessageText,
@@ -69,14 +62,28 @@ let store = {
         this._state.Contacts.messagesData.push(newMessage);
         this._state.Contacts.newMessageText = '';
         this._callSubscriber(this._state)
-    },
+    }, //добавление сообщения
     updateNewMessageText(newText) {
         this._state.Contacts.newMessageText = newText;
         this._callSubscriber(this._state);
-    },
-    subscribe (observer) {
-        this._callSubscriber = observer;
-    },
+    }, //обновление набираемого сообщения
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            const newPost = {
+                id: 5,
+                text: this._state.Main.newPostText,
+                likesCount: 0,
+            };
+
+            this._state.Main.newsData.push(newPost);
+            this._state.Main.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.Main.newPostText = action.newText;
+            this._callSubscriber(this._state)
+        }
+        },
 }
 
 

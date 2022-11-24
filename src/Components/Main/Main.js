@@ -10,11 +10,10 @@ function Main(props) {
         <div className={style.Wrapper}>
             <div className={style.container}>
                 <Posting
-                    AddPost={props.AddPost}
+                    dispatch={props.dispatch}
                     newPostText={props.newPostText}
-                    updateNewPostText={props.updateNewPostText}
                 />
-                <VantagePosts posts={props.posts} />
+                <VantagePosts posts={props.posts}/>
             </div>
         </div>
     )

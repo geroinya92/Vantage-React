@@ -9,13 +9,14 @@ function Posting(props) {
     function AddPost() {
 
         const text = newPostElement.current.value;
-        props.AddPost(text);
+        props.dispatch({type: 'ADD-POST'});
 
     };
 
     function onPostChange() {
         const text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        props.dispatch(action);
     };
 
     return (
