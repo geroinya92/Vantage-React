@@ -1,3 +1,5 @@
+let ADD_POST = 'ADD-POST';
+let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 let store = {
 
     //данные
@@ -52,21 +54,6 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    //переписка
-    SendMessage(Message) {
-        const newMessage = {
-            id: 6,
-            message: this._state.Contacts.newMessageText,
-        };
-
-        this._state.Contacts.messagesData.push(newMessage);
-        this._state.Contacts.newMessageText = '';
-        this._callSubscriber(this._state)
-    }, //добавление сообщения
-    updateNewMessageText(newText) {
-        this._state.Contacts.newMessageText = newText;
-        this._callSubscriber(this._state);
-    }, //обновление набираемого сообщения
 
     dispatch(action) {
         if (action.type === 'ADD-POST') {
@@ -82,10 +69,30 @@ let store = {
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.Main.newPostText = action.newText;
             this._callSubscriber(this._state)
+        } else if (action.type === 'SEND-MESSAGE') {
+            const newMessage = {
+                id: 6,
+                message: this._state.Contacts.newMessageText,
+            };
+
+            this._state.Contacts.messagesData.push(newMessage);
+            this._state.Contacts.newMessageText = '';
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.Contacts.newMessageText = action.newText;
+            this._callSubscriber(this._state);
         }
-        },
+    },
 }
 
+
+export function AddPostActionCreator() {
+    return {type: ADD_POST}
+}
+
+export function UpdateNewPostTextActionCreator(text) {
+    return {type: UPDATE_NEW_POST_TEXT, newText: text}
+}
 
 export default store
 window.store = store;

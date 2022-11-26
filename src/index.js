@@ -10,22 +10,19 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-function rerenderEntireTree (state) {
+function rerenderEntireTree(state) {
 
     root.render(
         <React.StrictMode>
             <App
                 state={state}
                 dispatch={store.dispatch.bind(store)}
-                SendMessage={store.SendMessage.bind(store)}
-                //updateNewPostText={store.updateNewPostText.bind(store)}
-                updateNewMessageText={store.updateNewMessageText.bind(store)}
             />
         </React.StrictMode>
     );
 }
 
-rerenderEntireTree (store.getState());
+rerenderEntireTree(store.getState());
 
 store.subscribe(rerenderEntireTree);
 

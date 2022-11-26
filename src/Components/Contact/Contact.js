@@ -17,12 +17,13 @@ function Contact(props) {
     function CreateMessage() {
 
         const text = newMessage.current.value;
-        props.SendMessage(text);
+        props.dispatch({type: 'SEND-MESSAGE'});
     }
 
     function onMessageChange() {
         const text = newMessage.current.value
-        props.updateNewMessageText(text);
+        let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text};
+        props.dispatch(action);
     }
 
     return (

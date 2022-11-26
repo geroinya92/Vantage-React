@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button, TextareaAutosize} from "@mui/material";
 import style from './Posting.module.css'
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../../Redux/State";
 
 function Posting(props) {
 
@@ -9,13 +10,13 @@ function Posting(props) {
     function AddPost() {
 
         const text = newPostElement.current.value;
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(AddPostActionCreator());
 
     };
 
     function onPostChange() {
         const text = newPostElement.current.value;
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        let action = UpdateNewPostTextActionCreator(text);
         props.dispatch(action);
     };
 

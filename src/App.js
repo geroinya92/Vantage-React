@@ -15,19 +15,19 @@ function App(props) {
             </div>
             <div>
                 <Routes>
-                    <Route exact path='/home' element={<Main
+                    <Route exact path='Home/' element={<Main
                         posts={props.state.Main.newsData}
                         newPostText={props.state.Main.newPostText}
                         dispatch={props.dispatch}
                     />
                     }
                     />
-                    <Route path='/contact'
+                    <Route path='/dialog/*'
                            element={<Contact
                                Data={props.state.Contacts}
                                SendMessage={props.SendMessage}
                                newMessageText={props.state.Contacts.newMessageText}
-                               updateNewMessageText={props.updateNewMessageText}
+                               dispatch={props.dispatch}
                            />
                            }
                     />
