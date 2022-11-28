@@ -1,5 +1,7 @@
 let ADD_POST = 'ADD-POST';
 let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+let SEND_MESSAGE = 'SEND-MESSAGE';
+let UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 let store = {
 
     //данные
@@ -85,13 +87,22 @@ let store = {
     },
 }
 
-
+//посты
 export function AddPostActionCreator() {
     return {type: ADD_POST}
 }
 
 export function UpdateNewPostTextActionCreator(text) {
     return {type: UPDATE_NEW_POST_TEXT, newText: text}
+}
+
+//переписка
+export function createMessageActionCreator () {
+    return {type: SEND_MESSAGE}
+}
+
+export function updateNewMessageTextActionCreator (text) {
+    return {type: UPDATE_NEW_MESSAGE_TEXT, newText: text}
 }
 
 export default store

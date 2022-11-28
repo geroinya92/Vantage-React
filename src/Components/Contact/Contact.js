@@ -3,6 +3,8 @@ import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Button, TextareaAutosize} from "@mui/material";
+import {createMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/State";
+
 
 function Contact(props) {
 
@@ -15,15 +17,13 @@ function Contact(props) {
     const newMessage = React.createRef();
 
     function CreateMessage() {
-
         const text = newMessage.current.value;
-        props.dispatch({type: 'SEND-MESSAGE'});
+        props.dispatch(createMessageActionCreator());
     }
 
     function onMessageChange() {
         const text = newMessage.current.value
-        let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text};
-        props.dispatch(action);
+        props.dispatch(updateNewMessageTextActionCreator(text));
     }
 
     return (

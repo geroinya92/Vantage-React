@@ -5,7 +5,7 @@ import Avatar from '@mui/material/Avatar';
 function DialogItem(props) {
 
     return (
-        <NavLink to={"/dialog/" + props.id}>
+        <NavLink to={"/contact/" + props.id}>
 
             <a>
                 <div className={style.Dialogs}>
