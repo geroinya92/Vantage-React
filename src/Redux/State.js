@@ -1,7 +1,6 @@
-let ADD_POST = 'ADD-POST';
-let UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-let SEND_MESSAGE = 'SEND-MESSAGE';
-let UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import mainReducer from "./Main-reducer";
+import contactsReducer from "./Contacts-reducer";
+
 let store = {
 
     //данные
@@ -58,52 +57,14 @@ let store = {
 
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            const newPost = {
-                id: 5,
-                text: this._state.Main.newPostText,
-                likesCount: 0,
-            };
+        this._state.Main = mainReducer(this._state.Main, action)
+        this._state.Contacts = contactsReducer(this._state.Contacts, action)
 
-            this._state.Main.newsData.push(newPost);
-            this._state.Main.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.Main.newPostText = action.newText;
-            this._callSubscriber(this._state)
-        } else if (action.type === 'SEND-MESSAGE') {
-            const newMessage = {
-                id: 6,
-                message: this._state.Contacts.newMessageText,
-            };
+        this._callSubscriber(this._state)
 
-            this._state.Contacts.messagesData.push(newMessage);
-            this._state.Contacts.newMessageText = '';
-            this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.Contacts.newMessageText = action.newText;
-            this._callSubscriber(this._state);
-        }
-    },
+    }
 }
 
-//посты
-export function AddPostActionCreator() {
-    return {type: ADD_POST}
-}
-
-export function UpdateNewPostTextActionCreator(text) {
-    return {type: UPDATE_NEW_POST_TEXT, newText: text}
-}
-
-//переписка
-export function createMessageActionCreator () {
-    return {type: SEND_MESSAGE}
-}
-
-export function updateNewMessageTextActionCreator (text) {
-    return {type: UPDATE_NEW_MESSAGE_TEXT, newText: text}
-}
 
 export default store
 window.store = store;

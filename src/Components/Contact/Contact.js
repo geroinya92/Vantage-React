@@ -3,7 +3,7 @@ import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Button, TextareaAutosize} from "@mui/material";
-import {createMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/State";
+import {createMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/Contacts-reducer";
 
 
 function Contact(props) {

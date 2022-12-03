@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, TextareaAutosize} from "@mui/material";
 import style from './Posting.module.css'
-import {AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../../Redux/State";
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../../Redux/Main-reducer";
 
 function Posting(props) {
 
