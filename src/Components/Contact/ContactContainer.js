@@ -1,27 +1,34 @@
 import React from 'react'
 import {createMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/Contacts-reducer";
 import Contact from "./Contact";
+import StoreContext from "../../StoreContext";
 
-
-function ContactContainer(props) {
-
-    function CreateMessage() {
-        props.dispatch(createMessageActionCreator())
-    }
-
-    function onMessageChange(text) {
-        const action = updateNewMessageTextActionCreator(text)
-        props.dispatch(action);
-    }
+function ContactContainer() {
 
     return (
-        <Contact
-            updateNewMessageText={onMessageChange}
-            createMessage={CreateMessage}
-            newMessageText={props.state.Contacts.newMessageText}
-            state={props.state}
-        />
+        <StoreContext.Consumer>
+            {(store) => {
+                let state = store.getState()
 
+                function CreateMessage() {
+                    store.dispatch(createMessageActionCreator())
+                }
+
+                function onMessageChange(text) {
+                    const action = updateNewMessageTextActionCreator(text)
+                    store.dispatch(action);
+                }
+
+                return <Contact
+                    updateNewMessageText={onMessageChange}
+                    createMessage={CreateMessage}
+                    newMessageText={state.Contacts.newMessageText}
+                    state={state}
+                />
+            }
+            }
+
+        </StoreContext.Consumer>
 
     )
 }

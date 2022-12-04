@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import About from "./Components/About/About";
 import ContactContainer from "./Components/Contact/ContactContainer";
 
-function App(props) {
+function App() {
 
     return (
         <BrowserRouter>
@@ -14,17 +14,11 @@ function App(props) {
             </div>
             <div>
                 <Routes>
-                    <Route exact path='home/' element={<Main
-                        state={props.state}
-                        dispatch={props.dispatch}
-                    />
+                    <Route exact path='home/' element={<Main/>
                     }
                     />
                     <Route path='/contact/*'
-                           element={<ContactContainer
-                               dispatch={props.dispatch}
-                               state={props.state}
-                           />
+                           element={<ContactContainer/>
                            }
                     />
                     <Route path='/about' element={<About/>}/>

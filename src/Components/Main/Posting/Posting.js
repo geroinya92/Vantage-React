@@ -2,7 +2,6 @@ import React from 'react'
 import {Button, TextareaAutosize} from "@mui/material";
 import style from './Posting.module.css'
 
-
 function Posting(props) {
 
     const newPostElement = React.createRef();
