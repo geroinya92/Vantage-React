@@ -16,8 +16,7 @@ function App(props) {
             <div>
                 <Routes>
                     <Route exact path='home/' element={<Main
-                        posts={props.state.Main.newsData}
-                        newPostText={props.state.Main.newPostText}
+                        state={props.state}
                         dispatch={props.dispatch}
                     />
                     }
