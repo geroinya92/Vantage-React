@@ -1,10 +1,9 @@
 import './App.css';
 import Header from './Components/Header/Header'
 import Main from "./Components/Main/Main";
-import Contact from "./Components/Contact/Contact";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import About from "./Components/About/About";
-import {updateNewMessageText} from "./Redux/State";
+import ContactContainer from "./Components/Contact/ContactContainer";
 
 function App(props) {
 
@@ -22,11 +21,9 @@ function App(props) {
                     }
                     />
                     <Route path='/contact/*'
-                           element={<Contact
-                               Data={props.state.Contacts}
-                               SendMessage={props.SendMessage}
-                               newMessageText={props.state.Contacts.newMessageText}
+                           element={<ContactContainer
                                dispatch={props.dispatch}
+                               state={props.state}
                            />
                            }
                     />

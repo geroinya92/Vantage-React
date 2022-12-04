@@ -9,12 +9,12 @@ function PostingContainer(props) {
 
     function AddPost() {
         props.dispatch(AddPostActionCreator())
-    };
+    }
 
     function onPostChange(text) {
         let action = UpdateNewPostTextActionCreator(text);
         props.dispatch(action);
-    };
+    }
 
     return (
         <Posting

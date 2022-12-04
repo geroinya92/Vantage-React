@@ -3,27 +3,26 @@ import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Button, TextareaAutosize} from "@mui/material";
-import {createMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/Contacts-reducer";
+
 
 
 function Contact(props) {
 
-    const DialogElement = props.Data.dialogsData
+    const DialogElement = props.state.Contacts.dialogsData
         .map(dialog => <DialogItem user={dialog.user} id={dialog.id}/>)
 
-    const messagesElements = props.Data.messagesData
+    const messagesElements = props.state.Contacts.messagesData
         .map(message => <MessageItem message={message.message} id={message.id}/>);
 
     const newMessage = React.createRef();
 
     function CreateMessage() {
-        const text = newMessage.current.value;
-        props.dispatch(createMessageActionCreator());
+        props.createMessage()
     }
 
     function onMessageChange() {
-        const text = newMessage.current.value
-        props.dispatch(updateNewMessageTextActionCreator(text));
+        let text = newMessage.current.value;
+        props.updateNewMessageText(text)
     }
 
     return (
