@@ -4,14 +4,12 @@ import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Button, TextareaAutosize} from "@mui/material";
 
-
-
 function Contact(props) {
 
-    const DialogElement = props.state.Contacts.dialogsData
+    const DialogElement = props.Contacts.dialogsData
         .map(dialog => <DialogItem user={dialog.user} id={dialog.id}/>)
 
-    const messagesElements = props.state.Contacts.messagesData
+    const messagesElements = props.Contacts.messagesData
         .map(message => <MessageItem message={message.message} id={message.id}/>);
 
     const newMessage = React.createRef();

@@ -15,29 +15,29 @@ function Posting(props) {
         props.updateNewPostText(text)
     }
 
-        return (
-            <div className={style.Container}>
-                <TextareaAutosize
-                    value={props.newPostText}
-                    ref={newPostElement}
-                    style={{
-                        width: 200,
-                        height: 50,
-                    }}
-                    label="What's new?"
-                    id="What"
-                    rows
-                    onChange={onPostChange}
-                />
-                <Button
-                    variant="contained"
-                    className={style.Button}
-                    onClick={onAddPost}
-                >
-                    Publish
-                </Button>
-            </div>
-        )
-    }
+    return (
+        <div className={style.Container}>
+            <TextareaAutosize
+                value={props.Main.newPostText}
+                ref={newPostElement}
+                style={{
+                    width: 200,
+                    height: 50,
+                }}
+                label="What's new?"
+                id="What"
+                rows
+                onChange={onPostChange}
+            />
+            <Button
+                variant="contained"
+                className={style.Button}
+                onClick={onAddPost}
+            >
+                Publish
+            </Button>
+        </div>
+    )
+}
 
 export default Posting;
