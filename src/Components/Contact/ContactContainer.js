@@ -6,19 +6,21 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
 
     return {
-        Contacts: state.Contacts
+        Contacts: state.Contacts,
+        messagesData: state.Contacts.messagesData,
+        newMessageText: state.Contacts.newMessageText
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        createMessage: (text) => {
+        updateNewMessageText: (text) => {
             dispatch(updateNewMessageTextActionCreator(text))
         },
-        updateNewMessageText: () => {
+
+        createMessage: () => {
             dispatch(createMessageActionCreator())
         },
-
     }
 }
 

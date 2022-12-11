@@ -7,10 +7,10 @@ import {Button, TextareaAutosize} from "@mui/material";
 function Contact(props) {
 
     const DialogElement = props.Contacts.dialogsData
-        .map(dialog => <DialogItem user={dialog.user} id={dialog.id}/>)
+        .map(dialog => <DialogItem user={dialog.user} key={dialog.id} id={dialog.id}/>)
 
     const messagesElements = props.Contacts.messagesData
-        .map(message => <MessageItem message={message.message} id={message.id}/>);
+        .map(message => <MessageItem message={message.message} key={message.id} id={message.id}/>);
 
     const newMessage = React.createRef();
 

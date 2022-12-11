@@ -5,18 +5,21 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        Main: state.Main
+        Main: state.Main,
+        newPostText: state.Main.newPostText,
+        newsData: state.Main.newsData
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addPost: (text) => {
-            dispatch(AddPostActionCreator(text))
+        updateNewPostText: (text) => {
+            dispatch(UpdateNewPostTextActionCreator(text))
         },
-        updateNewPostText: () => {
-            dispatch(UpdateNewPostTextActionCreator())
+        addPost: () => {
+            dispatch(AddPostActionCreator())
         },
+
     }
 }
 
