@@ -26,7 +26,7 @@ function Contact(props) {
     return (
         <div className={style.Wrapper}>
             <div className={style.container}>
-                <div>
+                <div className={style.Sidebar}>
                     {DialogElement}
                 </div>
                 <div className={style.AllMessages}>

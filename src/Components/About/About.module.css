@@ -9,15 +9,20 @@
     background: white;
     width: 1304px;
     padding: 0 68px;
-    display: grid;
+    display: flex;
  }
 
 .Sidebar {
-    background-color: #99823D;
-    width: 180px;
+    background: #6c675d;
+    width: 210px;
+    height: 100%;
+    padding-bottom: 32px;
 }
 
-.container a {
-    color: #99823D;
+
+.Info {
+    height: 100%;
+    width: calc(100% - 212px);
+    padding: 16px;
 }
 

@@ -1,7 +1,8 @@
 import style from './About.module.css'
 import React from 'react'
 import Service from "./Service/Service";
-import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
+import {Outlet} from "react-router-dom";
+import Team from "./Service/Team/Team";
 
 function About() {
     return (
@@ -12,8 +13,8 @@ function About() {
                 <Service name={'Advice'} item={'advance'}/>
                 <Service name={'Team'} item={'team'}/>
             </div>
-            <div>
-
+            <div className={style.Info}>
+                <Outlet />
             </div>
         </div>
         </div>

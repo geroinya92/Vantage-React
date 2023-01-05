@@ -1,5 +1,21 @@
 .container {
-    background: antiquewhite;
-    height: 200px;
-    width: 100%;
+    background: #b4a8a8;
+    min-width: 200px;
+    max-width: 75%;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 107px auto 120px;
+    margin: 16px;
+}
+
+.mainInfo {
+    padding: 0 15px;
+    display: grid;
+}
+
+.avatar {
+    display: grid;
+    margin: auto;
+    row-gap: 5px;
+    justify-items: center;
 }

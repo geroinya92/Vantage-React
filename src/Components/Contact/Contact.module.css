@@ -14,8 +14,9 @@
 }
 
 .Sidebar {
-    background-color: #99823D;
-    width: 180px;
+    background: #6c675d;
+    width: 210px;
+    height: 100%;
 }
 
 .AllMessages {
@@ -26,7 +27,7 @@
 
 .CreateMessage {
     margin: 15px;
-    width: 360;
+    width: 360px;
     display: grid;
     gap: 15px
 }
