@@ -4,22 +4,19 @@ import Avatar from "@mui/material/Avatar";
 import {Button} from "@mui/material";
 import axios from "axios";
 
-function Team(props) {
-    function getDesigners() {
-        if (props.designers.length === 0) {
+class Team extends React.Component {
+    constructor(props) {
+        super(props);
             axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(responce => {
-                    props.setDesigners(responce.data.items);
+                .then(response => {
+                    this.props.setDesigners(response.data.items);
                 })
         }
-    }
 
-
-    return (
-        <div>
-            <Button variant="contained" onClick={getDesigners}>Get Designers</Button>
+    render() {
+        return <div>
             {
-                props.designers.map(d => <div key={d.id} className={style.container}>
+                this.props.designers.map(d => <div key={d.id} className={style.container}>
                         <div className={style.avatar}>
                             <Avatar src={d.photos.small}/>
                             <div>
@@ -29,7 +26,7 @@ function Team(props) {
                                         variant="contained"
                                         size='small'
                                         onClick={() => {
-                                            props.unfollow(d.id)
+                                            this.props.unfollow(d.id)
                                         }}
                                     >
                                         unfollow
@@ -39,7 +36,7 @@ function Team(props) {
                                         variant="contained"
                                         size='small'
                                         onClick={() => {
-                                            props.follow(d.id)
+                                            this.props.follow(d.id)
                                         }}
                                     >
                                         follow
@@ -66,7 +63,7 @@ function Team(props) {
                 )
             }
         </div>
-    )
+    }
 }
 
 export default Team
