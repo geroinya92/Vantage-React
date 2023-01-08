@@ -5,15 +5,19 @@ import {Button} from "@mui/material";
 import axios from "axios";
 
 function Team(props) {
-    if (props.designers.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(responce => {
-                props.setDesigners(responce.data.items);
-            })
+    function getDesigners() {
+        if (props.designers.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(responce => {
+                    props.setDesigners(responce.data.items);
+                })
+        }
     }
+
 
     return (
         <div>
+            <Button variant="contained" onClick={getDesigners}>Get Designers</Button>
             {
                 props.designers.map(d => <div key={d.id} className={style.container}>
                         <div className={style.avatar}>
