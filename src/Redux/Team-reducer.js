@@ -1,9 +1,15 @@
 let FOLLOW = 'FOLLOW';
 let UNFOLLOW = 'UNFOLLOW';
 let SET_DESIGNERS = 'SET_DESIGNERS';
+let SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+let SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
-    designers: []
+    designers: [],
+    pageSize: 20,
+    totalUsersCount: 0,
+    currentPage: 1,
+
 };
 
 export const teamReducer = (state = initialState, action) => {
@@ -32,7 +38,17 @@ export const teamReducer = (state = initialState, action) => {
         case SET_DESIGNERS:
             return {
                 ...state,
-                designers: [...state.designers, ...action.designers]
+                designers: action.designers,
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage,
+            }
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount,
             }
         default:
             return state;
@@ -49,6 +65,14 @@ export function unfollowAC(designerID) {
 
 export function setDesignersAC(designers) {
     return {type: SET_DESIGNERS, designers}
+}
+
+export function setCurrentPageAC(currentPage) {
+    return {type: SET_CURRENT_PAGE, currentPage}
+}
+
+export function setTotalUsersCountAC(totalUsersCount) {
+    return {type: SET_TOTAL_USERS_COUNT, totalUsersCount}
 }
 
 export default teamReducer;

@@ -1,11 +1,21 @@
 import React from "react";
 import {connect} from "react-redux";
 import Team from "./Team";
-import {followAC, setDesignersAC, unfollowAC} from "../../../../Redux/Team-reducer";
+import {
+    followAC,
+    setCurrentPageAC,
+    setDesignersAC,
+    setTotalUsersCountAC,
+    unfollowAC
+} from "../../../../Redux/Team-reducer";
 
 function mapStateToProps(state) {
     return {
-        designers: state.teamPage.designers
+        designers: state.teamPage.designers,
+        pageSize: state.teamPage.pageSize,
+        totalUsersCount: state.teamPage.totalUsersCount,
+        currentPage: state.teamPage.currentPage,
+
     }
 }
 
@@ -19,7 +29,13 @@ function mapDispatchToProps(dispatch) {
         },
         setDesigners: (designers) => {
             dispatch(setDesignersAC(designers))
-        }
+        },
+        setCurrentPage: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber))
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setTotalUsersCountAC(totalCount))
+        },
     }
 }
 

@@ -4,7 +4,7 @@
     max-width: 75%;
     padding: 8px;
     display: grid;
-    grid-template-columns: 107px auto 120px;
+    grid-template-columns: 107px auto 150px;
     margin: 16px;
 }
 
@@ -19,3 +19,25 @@
     row-gap: 5px;
     justify-items: center;
 }
+
+.pagination {
+    display: flex;
+    width: calc(100% - 212px);
+    overflow-y: auto;
+}
+
+.pagination a {
+    color: inherit;
+    padding: 10px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.pageNumber {
+    padding: 10px;
+    color: black;
+    text-align: center;
+}
+
