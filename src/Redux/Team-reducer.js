@@ -62,27 +62,27 @@ export const teamReducer = (state = initialState, action) => {
     }
 }
 
-export function followAC(designerID) {
+export function follow(designerID) {
     return {type: FOLLOW, designerID}
 }
 
-export function unfollowAC(designerID) {
+export function unfollow(designerID) {
     return {type: UNFOLLOW, designerID}
 }
 
-export function setDesignersAC(designers) {
+export function setDesigners(designers) {
     return {type: SET_DESIGNERS, designers}
 }
 
-export function setCurrentPageAC(currentPage) {
+export function setCurrentPage(currentPage) {
     return {type: SET_CURRENT_PAGE, currentPage}
 }
 
-export function setTotalUsersCountAC(totalUsersCount) {
+export function setTotalUsersCount(totalUsersCount) {
     return {type: SET_TOTAL_USERS_COUNT, totalUsersCount}
 }
 
-export function toggleIsFetchingAC(isFetching) {
+export function toggleIsFetching(isFetching) {
     return {type: TOGGLE_IS_FETCHING, isFetching}
 }
 

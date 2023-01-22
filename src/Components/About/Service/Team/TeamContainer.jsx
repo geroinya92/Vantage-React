@@ -1,11 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setDesignersAC,
-    setTotalUsersCountAC, toggleIsFetchingAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    setDesigners,
+    setTotalUsersCount, toggleIsFetching,
+    unfollow
 } from "../../../../Redux/Team-reducer";
 import TeamPresentation from "./TeamPresentation";
 import axios from "axios";
@@ -23,29 +23,7 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        follow: (designerID) => {
-            dispatch(followAC(designerID))
-        },
-        unfollow: (designerID) => {
-            dispatch(unfollowAC(designerID))
-        },
-        setDesigners: (designers) => {
-            dispatch(setDesignersAC(designers))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
 
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        },
-    }
-}
 
 class Team extends React.Component {
 
@@ -93,4 +71,4 @@ class Team extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Team)
+export default connect(mapStateToProps, {follow, unfollow, setDesigners, setCurrentPage, setTotalUsersCount, toggleIsFetching })(Team)
