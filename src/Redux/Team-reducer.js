@@ -3,12 +3,14 @@ let UNFOLLOW = 'UNFOLLOW';
 let SET_DESIGNERS = 'SET_DESIGNERS';
 let SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 let SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+let TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     designers: [],
     pageSize: 20,
     totalUsersCount: 0,
     currentPage: 1,
+    isFetching: true,
 
 };
 
@@ -50,6 +52,11 @@ export const teamReducer = (state = initialState, action) => {
                 ...state,
                 totalUsersCount: action.totalUsersCount,
             }
+            case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching,
+            }
         default:
             return state;
     }
@@ -73,6 +80,10 @@ export function setCurrentPageAC(currentPage) {
 
 export function setTotalUsersCountAC(totalUsersCount) {
     return {type: SET_TOTAL_USERS_COUNT, totalUsersCount}
+}
+
+export function toggleIsFetchingAC(isFetching) {
+    return {type: TOGGLE_IS_FETCHING, isFetching}
 }
 
 export default teamReducer;
