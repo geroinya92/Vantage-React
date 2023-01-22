@@ -2,7 +2,6 @@ import style from './About.module.css'
 import React from 'react'
 import Service from "./Service/Service";
 import {Outlet} from "react-router-dom";
-import Team from "./Service/Team/Team";
 
 function About() {
     return (
