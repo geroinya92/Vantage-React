@@ -6,6 +6,7 @@ import About from "./Components/About/About";
 import ContactContainer from "./Components/Contact/ContactContainer";
 import React from "react";
 import TeamContainer from "./Components/About/Service/Team/TeamContainer";
+import DesignerProfileContainer from "./Components/About/Service/Team/DesignerProfile/DesignerProfileContainer";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                         <Route path='design' element={<TeamContainer/>}/>
                         <Route path='advance' element={<TeamContainer/>}/>
                         <Route path='team' element={<TeamContainer/>}/>
+                        <Route path='team/profile/*' element={<DesignerProfileContainer />} />
                     </Route>
                 </Routes>
             </div>

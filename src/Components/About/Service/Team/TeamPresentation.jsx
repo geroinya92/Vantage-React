@@ -2,6 +2,7 @@ import React from 'react'
 import style from "./Team.module.css";
 import Avatar from "@mui/material/Avatar";
 import {Button} from "@mui/material";
+import {NavLink} from "react-router-dom";
 
 const TeamPresentation = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -32,7 +33,9 @@ const TeamPresentation = (props) => {
             props.designers.map(d => <div key={d.id} className={style.container}>
 
                     <div className={style.avatar}>
-                        <Avatar src={d.photos.small}/>
+                        <NavLink to={'profile/' + d.id}>
+                            <Avatar src={d.photos.small}/>
+                        </NavLink>
                         <div>
                             {d.followed
                                 ?
