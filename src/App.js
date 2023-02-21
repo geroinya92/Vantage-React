@@ -25,7 +25,7 @@ function App() {
                         <Route path='design' element={<TeamContainer/>}/>
                         <Route path='advance' element={<TeamContainer/>}/>
                         <Route path='team' element={<TeamContainer/>}/>
-                        <Route path='team/profile/*' element={<DesignerProfileContainer />} />
+                        <Route path='team/profile/:userId' element={<DesignerProfileContainer />} />
                     </Route>
                 </Routes>
             </div>
