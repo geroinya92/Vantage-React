@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
 import {connect} from "react-redux";
 import DesignerProfile from "./DesignerProfile";
 import {setDesignerProfile} from "../../../../../Redux/DesignerProfile-reducer";
 import { useParams } from 'react-router-dom';
+import {profileApi} from "../../../../../api/api";
 
 export function withRouter(Children){
     return(props)=>{
@@ -23,10 +23,9 @@ class DesignerProfileContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match?.params?.userId
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                this.props.setDesignerProfile(response.data);
+        profileApi.getProfile(userId)
+            .then(data => {
+                this.props.setDesignerProfile(data);
             })
     }
 

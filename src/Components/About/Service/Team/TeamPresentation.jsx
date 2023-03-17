@@ -3,7 +3,7 @@ import style from "./Team.module.css";
 import Avatar from "@mui/material/Avatar";
 import {Button} from "@mui/material";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {followApi} from "../../../../api/api";
 
 const TeamPresentation = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -44,14 +44,9 @@ const TeamPresentation = (props) => {
                                     variant="contained"
                                     size='small'
                                     onClick={() => {
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${d.id}`,{
-                                            withCredentials: true,
-                                            headers: {
-                                                'API-KEY': '0d5fdd03-1a3c-47a6-addf-87c8d41e990d'
-                                            }
-                                        })
-                                            .then(response => {
-                                                if (response.data.resultCode === 0) {
+                                        followApi.deleteFollow(d.id)
+                                        .then(data => {
+                                                if (data.resultCode === 0) {
                                                     props.unfollow(d.id)
                                                 }
                                             })
@@ -64,14 +59,9 @@ const TeamPresentation = (props) => {
                                     variant="contained"
                                     size='small'
                                     onClick={() => {
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${d.id}`, {}, {
-                                            withCredentials: true,
-                                            headers: {
-                                                'API-KEY': '0d5fdd03-1a3c-47a6-addf-87c8d41e990d'
-                                            }
-                                        })
-                                            .then(response => {
-                                                if (response.data.resultCode === 0) {
+                                        followApi.postFollow(d.id)
+                                            .then(data => {
+                                                if (data.resultCode === 0) {
                                                     props.follow(d.id)
                                                 }
                                             })
