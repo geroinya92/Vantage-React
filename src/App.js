@@ -1,5 +1,4 @@
 import './App.css';
-import Header from './Components/Header/Header'
 import Main from "./Components/Main/Main";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import About from "./Components/About/About";
@@ -7,13 +6,15 @@ import ContactContainer from "./Components/Contact/ContactContainer";
 import React from "react";
 import TeamContainer from "./Components/About/Service/Team/TeamContainer";
 import DesignerProfileContainer from "./Components/About/Service/Team/DesignerProfile/DesignerProfileContainer";
+import MyProfileContainer from "./Components/MyProfile/MyProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 function App() {
 
     return (
         <BrowserRouter>
             <div>
-                <Header/>
+                <HeaderContainer/>
             </div>
             <div>
                 <Routes>
@@ -27,6 +28,8 @@ function App() {
                         <Route path='team' element={<TeamContainer/>}/>
                         <Route path='team/profile/:userId' element={<DesignerProfileContainer />} />
                     </Route>
+                    <Route path='profile' element={<MyProfileContainer/>}/>
+                    <Route path='login' element={<MyProfileContainer/>}/>
                 </Routes>
             </div>
         </BrowserRouter>

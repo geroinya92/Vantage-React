@@ -2,7 +2,7 @@
     background: black;
     display: grid;
     justify-content: center;
-    height: 726px;
+    height: 136px;
 }
 
 .Wrapper__container {
@@ -10,7 +10,7 @@
     width: 1304px;
     display: grid;
     justify-content: space-between;
-    grid-template-columns: 326px auto;
+    grid-template-columns: 326px auto auto;
     padding: 0 68px;
     position: static;
 }

@@ -1,0 +1,12 @@
+.Wrapper {
+    display: grid;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.Wrapper__container {
+    width: 1304px;
+    display: grid;
+    justify-content: space-between;
+    padding: 0 68px;
+}
