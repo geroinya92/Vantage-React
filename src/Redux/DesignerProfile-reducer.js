@@ -1,3 +1,5 @@
+import {profileApi} from "../api/api";
+
 let SET_DESIGNER_PROFILE = 'SET_DESIGNER_PROFILE';
 
 
@@ -19,5 +21,12 @@ export const designerProfileReducer = (state = initialState, action) => {
 export function setDesignerProfile(designerProfile) {
     return {type: SET_DESIGNER_PROFILE, designerProfile}
 }
+
+export const getProfile = (userId) => (dispatch) => {
+    profileApi.getProfile(userId).then(data => {
+        dispatch(setDesignerProfile(data));
+    })
+}
+
 
 export default designerProfileReducer;

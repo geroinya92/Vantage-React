@@ -1,16 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsers,
     setCurrentPage,
     setDesigners,
-    setTotalUsersCount, toggleFollowingProgress, toggleIsFetching,
+    toggleFollowingProgress,
     unfollow
 } from "../../../../Redux/Team-reducer";
 import TeamPresentation from "./TeamPresentation";
 import {LinearProgress} from "@mui/material";
-import {usersApi} from "../../../../api/api";
-
 
 function mapStateToProps(state) {
     return {
@@ -24,27 +22,14 @@ function mapStateToProps(state) {
     }
 }
 
-
-
 class Team extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-
-        usersApi.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setDesigners(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        usersApi.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setDesigners(data.items);
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -73,4 +58,13 @@ class Team extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setDesigners, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress })(Team)
+export default connect(mapStateToProps,
+    {
+        follow,
+        unfollow,
+        setDesigners,
+        setCurrentPage,
+        toggleFollowingProgress,
+        getUsers,
+    })
+(Team)

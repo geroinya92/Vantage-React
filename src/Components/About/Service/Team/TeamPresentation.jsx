@@ -3,8 +3,6 @@ import style from "./Team.module.css";
 import Avatar from "@mui/material/Avatar";
 import {Button} from "@mui/material";
 import {NavLink} from "react-router-dom";
-import {followApi} from "../../../../api/api";
-import {toggleFollowingProgress} from "../../../../Redux/Team-reducer";
 
 const TeamPresentation = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -39,45 +37,26 @@ const TeamPresentation = (props) => {
                             <Avatar src={d.photos.small}/>
                         </NavLink>
                         <div>
-                            {d.followed
-                                ?
+                            {d.followed ? (
                                 <Button
                                     disabled={props.followingInProgress.some(id => id === d.id)}
                                     variant="contained"
                                     size='small'
-                                    onClick={() => {
-                                        props.toggleFollowingProgress(true, d.id);
-                                        followApi.deleteFollow(d.id)
-                                        .then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.unfollow(d.id)
-                                                }
-                                            props.toggleFollowingProgress(false, d.id);
-                                            })
-                                    }}
+                                    onClick={() => props.unfollow(d.id)}
                                 >
                                     unfollow
                                 </Button>
-                                :
+                            ) : (
                                 <Button
                                     disabled={props.followingInProgress.some(id => id === d.id)}
                                     variant="contained"
                                     size='small'
-                                    onClick={() => {
-                                        props.toggleFollowingProgress(true, d.id);
-                                        followApi.postFollow(d.id)
-                                            .then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.follow(d.id)
-                                                }
-                                                props.toggleFollowingProgress(false, d.id);
-                                            })
-                                    }}
+                                    onClick={() => props.follow(d.id)}
                                 >
                                     follow
                                 </Button>
+                            )
                             }
-
                         </div>
                     </div>
                     <div>

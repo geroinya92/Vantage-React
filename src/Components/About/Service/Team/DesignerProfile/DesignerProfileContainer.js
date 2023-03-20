@@ -1,9 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import DesignerProfile from "./DesignerProfile";
-import {setDesignerProfile} from "../../../../../Redux/DesignerProfile-reducer";
+import {getProfile} from "../../../../../Redux/DesignerProfile-reducer";
 import { useParams } from 'react-router-dom';
-import {profileApi} from "../../../../../api/api";
 
 export function withRouter(Children){
     return(props)=>{
@@ -23,10 +22,7 @@ class DesignerProfileContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match?.params?.userId
-        profileApi.getProfile(userId)
-            .then(data => {
-                this.props.setDesignerProfile(data);
-            })
+        this.props.getProfile(userId)
     }
 
     render() {
@@ -37,4 +33,4 @@ class DesignerProfileContainer extends React.Component {
 }
 const WithUrlDataContainerComponent = withRouter(DesignerProfileContainer)
 
-export default connect(mapStateToProps, {setDesignerProfile})(WithUrlDataContainerComponent)
+export default connect(mapStateToProps, {getProfile})(WithUrlDataContainerComponent)

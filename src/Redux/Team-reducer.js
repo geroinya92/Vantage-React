@@ -1,3 +1,5 @@
+import {usersApi as userApi, usersApi} from "../api/api";
+
 let FOLLOW = 'FOLLOW';
 let UNFOLLOW = 'UNFOLLOW';
 let SET_DESIGNERS = 'SET_DESIGNERS';
@@ -71,11 +73,11 @@ export const teamReducer = (state = initialState, action) => {
     }
 }
 
-export function follow(designerID) {
+export function followSuccess(designerID) {
     return {type: FOLLOW, designerID}
 }
 
-export function unfollow(designerID) {
+export function unfollowSuccess(designerID) {
     return {type: UNFOLLOW, designerID}
 }
 
@@ -98,5 +100,47 @@ export function toggleIsFetching(isFetching) {
 export function toggleFollowingProgress(isFetching, designerID) {
     return {type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, designerID}
 }
+
+export const getUsers = (currentPage, pageSize) => {
+    return ((dispatch) => {
+            dispatch(toggleIsFetching(true))
+            usersApi.getUsers(currentPage, pageSize)
+                .then(data => {
+                    dispatch(toggleIsFetching(false));
+                    dispatch(setDesigners(data.items));
+                    dispatch(setTotalUsersCount(data.totalCount));
+                })
+        }
+    )
+}
+
+export const follow = (userId) => {
+    return ((dispatch) => {
+            dispatch(toggleFollowingProgress(true, userId))
+            userApi.follow(userId)
+                .then(data => {
+                    if (data.resultCode === 0) {
+                        dispatch(followSuccess(userId))
+                    }
+                    dispatch(toggleFollowingProgress(false, userId));
+                })
+        }
+    )
+}
+
+export const unfollow = (userId) => {
+    return ((dispatch) => {
+            dispatch(toggleFollowingProgress(true, userId))
+            userApi.unfollow(userId)
+                .then(data => {
+                    if (data.resultCode === 0) {
+                        dispatch(unfollowSuccess(userId))
+                    }
+                    dispatch(toggleFollowingProgress(false, userId));
+                })
+        }
+    )
+}
+
 
 export default teamReducer;

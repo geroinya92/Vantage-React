@@ -1,9 +1,10 @@
 import mainReducer from "./Main-reducer";
 import contactsReducer from "./Contacts-reducer";
-import {combineReducers, createStore} from "@reduxjs/toolkit";
+import {applyMiddleware, combineReducers, createStore} from "@reduxjs/toolkit";
 import TeamReducer from "./Team-reducer";
 import designerProfileReducer from "./DesignerProfile-reducer"
 import authReducer from "./Auth-reducer";
+import thunkMiddleWare from 'redux-thunk'
 
 let reducers = combineReducers({
     Main: mainReducer,
@@ -13,7 +14,7 @@ let reducers = combineReducers({
     auth: authReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleWare));
 
 window.store = store;
 
