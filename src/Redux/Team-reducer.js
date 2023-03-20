@@ -4,6 +4,7 @@ let SET_DESIGNERS = 'SET_DESIGNERS';
 let SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 let SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 let TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+let TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState = {
     designers: [],
@@ -11,6 +12,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
+    followingInProgress: [],
 
 };
 
@@ -57,6 +59,13 @@ export const teamReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching,
             }
+            case TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.designerID]
+                    : state.followingInProgress.filter(id => id != action.designerID),
+            }
         default:
             return state;
     }
@@ -84,6 +93,10 @@ export function setTotalUsersCount(totalUsersCount) {
 
 export function toggleIsFetching(isFetching) {
     return {type: TOGGLE_IS_FETCHING, isFetching}
+}
+
+export function toggleFollowingProgress(isFetching, designerID) {
+    return {type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, designerID}
 }
 
 export default teamReducer;

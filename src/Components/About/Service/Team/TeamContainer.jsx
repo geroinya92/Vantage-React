@@ -4,7 +4,7 @@ import {
     follow,
     setCurrentPage,
     setDesigners,
-    setTotalUsersCount, toggleIsFetching,
+    setTotalUsersCount, toggleFollowingProgress, toggleIsFetching,
     unfollow
 } from "../../../../Redux/Team-reducer";
 import TeamPresentation from "./TeamPresentation";
@@ -19,6 +19,7 @@ function mapStateToProps(state) {
         totalUsersCount: state.teamPage.totalUsersCount,
         currentPage: state.teamPage.currentPage,
         isFetching: state.teamPage.isFetching,
+        followingInProgress: state.teamPage.followingInProgress,
 
     }
 }
@@ -64,10 +65,12 @@ class Team extends React.Component {
                 unfollow={this.props.unfollow}
                 follow={this.props.follow}
                 onPageChanged={this.onPageChanged}
+                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                followingInProgress={this.props.followingInProgress}
             />
         </>
 
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setDesigners, setCurrentPage, setTotalUsersCount, toggleIsFetching })(Team)
+export default connect(mapStateToProps, {follow, unfollow, setDesigners, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress })(Team)

@@ -5,7 +5,6 @@ import Item from "./Item/item";
 import {NavLink} from "react-router-dom";
 
 function Navbar(props) {
-    console.log(props.login)
     return (
         <div className={style.container}>
             <Slogan className={style.container_slogan}/>
