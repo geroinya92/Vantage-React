@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const DesignerProfile = (props) => {
     return <>
         <img alt={'avatar'} src={props.designerProfile?.designerProfile?.photos.large}/>

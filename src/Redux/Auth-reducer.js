@@ -1,7 +1,6 @@
 import {authApi} from "../api/api";
 
 let SET_USER_DATA = 'FOLLOW';
-let UNFOLLOW = 'UNFOLLOW';
 
 let initialState = {
     id: null,

@@ -8,7 +8,8 @@ let mapStateToProps = (state) => {
     return {
         Contacts: state.Contacts,
         messagesData: state.Contacts.messagesData,
-        newMessageText: state.Contacts.newMessageText
+        newMessageText: state.Contacts.newMessageText,
+        isAuth: state.auth.isAuth,
     }
 }
 

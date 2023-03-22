@@ -1,11 +1,23 @@
 import MyProfile from "./MyProfile";
 
 import React from 'react'
+import {connect} from "react-redux";
 
-const MyProfileContainer = (props) => {
-    return(
-        <MyProfile/>
-    )
+class MyProfileContainer extends React.Component {
+    componentDidMount() {
+    }
+
+    render() {
+        return (
+            <MyProfile/>
+        )
+    }
 }
 
-export default MyProfileContainer
+let mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps, {})  (MyProfileContainer)
