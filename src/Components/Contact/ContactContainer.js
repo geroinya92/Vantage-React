@@ -2,16 +2,17 @@ import React from 'react'
 import {createMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/Contacts-reducer";
 import Contact from "./Contact";
 import {connect} from "react-redux";
+import {withAuthNavigate} from "../../hoc/withAuthNavigate";
 
 let mapStateToProps = (state) => {
-
     return {
         Contacts: state.Contacts,
         messagesData: state.Contacts.messagesData,
         newMessageText: state.Contacts.newMessageText,
-        isAuth: state.auth.isAuth,
     }
 }
+
+
 
 let mapDispatchToProps = (dispatch) => {
     return {
@@ -25,6 +26,8 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const ContactContainer = connect(mapStateToProps, mapDispatchToProps)(Contact);
+let AuthNavigateComponent = withAuthNavigate(Contact)
+
+const ContactContainer = connect(mapStateToProps, mapDispatchToProps)(AuthNavigateComponent);
 
 export default ContactContainer

@@ -1,23 +1,8 @@
 import MyProfile from "./MyProfile";
 
 import React from 'react'
-import {connect} from "react-redux";
+import {withAuthNavigate} from "../../hoc/withAuthNavigate";
 
-class MyProfileContainer extends React.Component {
-    componentDidMount() {
-    }
+let MyProfileContainer = withAuthNavigate(MyProfile)
 
-    render() {
-        return (
-            <MyProfile/>
-        )
-    }
-}
-
-let mapStateToProps = (state) => {
-    return {
-        isAuth: state.auth.isAuth
-    }
-}
-
-export default connect(mapStateToProps, {})  (MyProfileContainer)
+export default MyProfileContainer
