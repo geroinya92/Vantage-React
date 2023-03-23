@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import DesignerProfile from "./DesignerProfile";
 import {getProfile} from "../../../../../Redux/DesignerProfile-reducer";
 import { useParams } from 'react-router-dom';
+import {compose} from "@reduxjs/toolkit";
 
 export function withRouter(Children){
     return(props)=>{
@@ -31,6 +32,8 @@ class DesignerProfileContainer extends React.Component {
             )
     }
 }
-const WithUrlDataContainerComponent = withRouter(DesignerProfileContainer)
 
-export default connect(mapStateToProps, {getProfile})(WithUrlDataContainerComponent)
+export default compose(
+    connect(mapStateToProps, {getProfile}),
+    withRouter
+)(DesignerProfileContainer)

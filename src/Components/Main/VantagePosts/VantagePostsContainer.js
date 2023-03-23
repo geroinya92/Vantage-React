@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import VantagePosts from "./VantagePosts";
+import {compose} from "@reduxjs/toolkit";
 
 let mapStateToProps = (state) => {
 
@@ -9,6 +10,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-const VantagePostsContainer = connect(mapStateToProps)(VantagePosts)
-
-export default VantagePostsContainer
+export default compose(
+    connect(mapStateToProps)
+)(VantagePosts)
