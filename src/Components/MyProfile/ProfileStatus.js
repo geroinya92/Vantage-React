@@ -1,4 +1,5 @@
 import React from "react";
+import login from "../Login/Login";
 
 class ProfileStatus extends React.Component {
 
@@ -20,14 +21,20 @@ class ProfileStatus extends React.Component {
         this.props.updateStatus(this.state.status)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status != this.props.status) {
+            this.setState({status: this.props.status})
+        }
+    }
+
     onStatusChange = (e) => {
         this.setState({
             status: e.currentTarget.value
         })
-        //this.props.updateStatus(this.state.status)
     }
 
     render() {
+        console.log('render')
         return (
             <div style={{display: 'grid'}}>
                 {this.state.editMode ? (

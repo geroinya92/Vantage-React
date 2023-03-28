@@ -5,6 +5,7 @@ import login from "../../../../Login/Login";
 const DesignerProfile = (props) => {
 
     return (
+
     <>
         <img alt={'avatar'} src={props.designerProfile?.photos.large}/>
         <ProfileStatus
