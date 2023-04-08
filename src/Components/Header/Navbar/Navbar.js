@@ -5,6 +5,7 @@ import Item from "./Item/item";
 import {NavLink} from "react-router-dom";
 
 function Navbar(props) {
+    console.log(props)
     return (
         <div className={style.container}>
             <Slogan className={style.container_slogan}/>
@@ -18,7 +19,7 @@ function Navbar(props) {
                 <div>
                     {props.isAuth
                         ? (
-                            <div className={style.login}>{props.login}</div>
+                            <div className={style.login}>{props.login} <button onClick={props.logout}>Log out</button></div>
                         ) : (
                             <NavLink to={'/login'}>Login</NavLink>
                         )}

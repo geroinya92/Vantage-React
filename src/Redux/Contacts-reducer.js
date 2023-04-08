@@ -1,5 +1,4 @@
 let SEND_MESSAGE = 'SEND-MESSAGE';
-let UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogsData: [
@@ -16,35 +15,24 @@ let initialState = {
         {id: 4, message: 'What about meeting?!'},
         {id: 5, message: 'You very interesting!'},
     ],
-    newMessageText: 'Hello!',
 };
 
 export const contactsReducer = (state = initialState, action) => {
     let stateCopy;
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return  {
-                ...state,
-                newMessageText: action.newText,
-            };
 
         case SEND_MESSAGE:
             return  {
                 ...state,
-                newMessageText: '',
-                messagesData: [...state.messagesData, {id: 6, message: state.newMessageText}],
+                messagesData: [...state.messagesData, {id: 6, message: action.newMessageText}],
             };
         default:
             return state;
     }
 }
 
-export function createMessageActionCreator() {
-    return {type: SEND_MESSAGE}
-}
-
-export function updateNewMessageTextActionCreator(text) {
-    return {type: UPDATE_NEW_MESSAGE_TEXT, newText: text}
+export function createMessageActionCreator(newMessageText) {
+    return {type: SEND_MESSAGE, newMessageText}
 }
 
 export default contactsReducer;

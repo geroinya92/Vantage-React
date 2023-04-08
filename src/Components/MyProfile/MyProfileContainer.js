@@ -11,6 +11,7 @@ let mapStateToProps = (state) => {
         designerProfile: state.designerProfile.designerProfile,
         status: state.designerProfile.status,
         updateStatus: state.designerProfile.updateStatus,
+        isAuth: state.auth.isAuth,
     }
 }
 

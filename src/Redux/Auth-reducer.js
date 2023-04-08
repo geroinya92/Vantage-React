@@ -1,6 +1,6 @@
 import {authApi} from "../api/api";
 
-let SET_USER_DATA = 'FOLLOW';
+let SET_USER_DATA = 'SET_USER_DATA';
 
 let initialState = {
     id: null,
@@ -17,16 +17,14 @@ export const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true,
-            }
-
+                ...action.payload,
+            };
         default:
             return state;
     }
 }
-export function setAuthUserData(id, email, login) {
-    return {type: SET_USER_DATA, data: {id, email, login}}
+export function setAuthUserData(id, email, login, isAuth) {
+    return {type: SET_USER_DATA, payload: {id, email, login, isAuth}}
 }
 
 export const getAuth = () => {
@@ -35,7 +33,29 @@ export const getAuth = () => {
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data;
-                    dispatch(setAuthUserData(id, email, login))
+                    dispatch(setAuthUserData(id, email, login, true))
+                }
+            })
+    })
+}
+
+export const login = (email, password, rememberMe) => {
+    return((dispatch) => {
+        authApi.login(email, password, rememberMe)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(getAuth())
+                }
+            })
+    })
+}
+
+export const logout = () => {
+    return((dispatch) => {
+        authApi.logout()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(setAuthUserData(null, null, null, false))
                 }
             })
     })

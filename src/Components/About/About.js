@@ -1,7 +1,7 @@
 import style from './About.module.css'
 import React from 'react'
 import Service from "./Service/Service";
-import {Outlet} from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
 
 function About() {
     return (

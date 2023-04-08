@@ -1,41 +1,82 @@
 import React from 'react'
-import {Button, TextareaAutosize} from "@mui/material";
 import style from './Posting.module.css'
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, requiredField} from "../../../utilities/Validations/validations";
+import {Textarea} from "../../comon/FormsControls/FormsControls";
+
+const maxLength10 = maxLengthCreator(10)
+
+const PostForm = (props) => {
+
+    /*function duplicateCount(text) {
+        let arr = text.toLowerCase().split('')
+        let res = []
+        let revisioned = []
+        for (let i = 0; i < arr.length; i++) {
+            res[i] = 0
+            if (!revisioned.includes(arr[i])) {
+                arr.forEach((el) => {
+                    if (el === arr[i]) {
+                        revisioned.push(el)
+                        res[i]++
+                    }
+                })
+            }
+        }
+        let resres = []
+        res.forEach((el) => {
+            if (el > 1) {
+                resres.push(el)
+            }
+        })
+        return (resres.length)
+    }
+
+
+    console.log(duplicateCount('text'))*/
+
+    function isPrime(num) {
+        if (Math.abs(num) > 1) {
+            for (let i = 2; i < Math.abs(num); i++) {
+                if (num % i === 0) {
+                    return false
+                    break
+                } else {
+                    return true
+                    continue
+                }
+            }
+        } else return false
+    }
+    console.log(isPrime(-1))
+
+
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field
+                    name="newPostText"
+                    component={Textarea}
+                    validate={[requiredField, maxLength10]}
+                />
+            </div>
+            <button>
+                Publish
+            </button>
+        </form>
+    )
+}
+
+const PostReduxForm = reduxForm({form: 'newPost'})(PostForm)
 
 function Posting(props) {
 
-    const newPostElement = React.createRef();
-
-    function onAddPost() {
-        props.addPost()
+    function addNewPost(value) {
+       props.addPost(value.newPostText)
     }
-
-    function onPostChange() {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text)
-    }
-
     return (
         <div className={style.Container}>
-            <TextareaAutosize
-                value={props.Main.newPostText}
-                ref={newPostElement}
-                style={{
-                    width: 200,
-                    height: 50,
-                }}
-                label="What's new?"
-                id="What"
-                rows
-                onChange={onPostChange}
-            />
-            <Button
-                variant="contained"
-                className={style.Button}
-                onClick={onAddPost}
-            >
-                Publish
-            </Button>
+            <PostReduxForm onSubmit={addNewPost} />
         </div>
     )
 }

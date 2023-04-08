@@ -2,7 +2,7 @@
     background: black;
     display: grid;
     justify-content: center;
-    height: 136px;
+    height: 80px;
 }
 
 .Wrapper__container {
@@ -16,7 +16,7 @@
 }
 
 .Wrapper__container_logo {
-    height: 136px;
+    height: 80px;
     width: 326px;
     background: #99823D;
     display: grid;
