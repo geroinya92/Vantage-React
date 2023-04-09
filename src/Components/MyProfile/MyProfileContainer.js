@@ -5,6 +5,7 @@ import DesignerProfile from "../About/Service/Team/DesignerProfile/DesignerProfi
 import {connect} from "react-redux";
 import {getProfile, getStatus, updateStatus} from "../../Redux/DesignerProfile-reducer";
 import {withRouter} from "../About/Service/Team/DesignerProfile/DesignerProfileContainer";
+import {withAuthNavigate} from "../../hoc/withAuthNavigate";
 
 let mapStateToProps = (state) => {
     return {
@@ -25,7 +26,6 @@ class MyProfileContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.authorizedUserId)
         return (
             <div style={{width: '1304px', margin: '20px auto' }}>
                 <DesignerProfile
@@ -41,5 +41,6 @@ class MyProfileContainer extends React.Component {
 
 export default compose(
     connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
-    withRouter
+    withRouter,
+    withAuthNavigate
 )(MyProfileContainer)

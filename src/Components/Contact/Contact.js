@@ -2,7 +2,7 @@ import style from './Contact.module.css'
 import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
 import {Textarea} from "../comon/FormsControls/FormsControls";
 import {requiredField} from "../../utilities/Validations/validations";
 import {Button} from "@mui/material";
@@ -15,7 +15,7 @@ const ContactForm = (props) => {
                        validate={[requiredField]}/>
             </div>
             <div>
-                <Button variant={'contained'}>
+                <Button type={'submit'} variant={'contained'}>
                     Send
                 </Button>
             </div>
@@ -34,8 +34,9 @@ function Contact(props) {
     const messagesElements = props.Contacts.messagesData
         .map(message => <MessageItem message={message.message} key={message.id} id={message.id}/>);
 
-    let addNewMessage = (values) => {
+    let addNewMessage = (values, dispatch) => {
         props.createMessage(values.newMessageText)
+        dispatch(reset('messageOnContact'))
     }
     return (
         <div className={style.Wrapper}>

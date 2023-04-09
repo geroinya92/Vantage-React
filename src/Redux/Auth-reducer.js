@@ -24,13 +24,14 @@ export const authReducer = (state = initialState, action) => {
             return state;
     }
 }
+
 export function setAuthUserData(id, email, login, isAuth) {
     return {type: SET_USER_DATA, payload: {id, email, login, isAuth}}
 }
 
 export const getAuth = () => {
     return ((dispatch) => {
-        authApi.getAuth()
+       return authApi.getAuth()
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data;
