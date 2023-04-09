@@ -3,6 +3,7 @@ import style from './Posting.module.css'
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, requiredField} from "../../../utilities/Validations/validations";
 import {Textarea} from "../../comon/FormsControls/FormsControls";
+import {Button} from "@mui/material";
 
 const maxLength10 = maxLengthCreator(10)
 
@@ -48,8 +49,6 @@ const PostForm = (props) => {
             }
         } else return false
     }
-    console.log(isPrime(-1))
-
 
     return (
         <form onSubmit={props.handleSubmit}>
@@ -60,9 +59,9 @@ const PostForm = (props) => {
                     validate={[requiredField, maxLength10]}
                 />
             </div>
-            <button>
+            <Button variant={'contained'}>
                 Publish
-            </button>
+            </Button>
         </form>
     )
 }

@@ -12,24 +12,27 @@ let mapStateToProps = (state) => {
         status: state.designerProfile.status,
         updateStatus: state.designerProfile.updateStatus,
         isAuth: state.auth.isAuth,
+        authorizedUserId: state.auth.id,
     }
 }
 
 class MyProfileContainer extends React.Component {
 
     componentDidMount() {
-        let userId = '28404'
+        let userId= this.props.authorizedUserId
         this.props.getProfile(userId)
         this.props.getStatus(userId)
     }
 
     render() {
+        console.log(this.props.authorizedUserId)
         return (
             <div style={{width: '1304px', margin: '20px auto' }}>
                 <DesignerProfile
                     {...this.props}
                     status={this.props.status}
                     updateStatus={this.props.updateStatus}
+                    designerProfile={this.props.designerProfile}
                 />
             </div>
         )

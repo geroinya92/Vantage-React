@@ -18,7 +18,8 @@ let mapStateToProps = (state) => {
         designerProfile: state.designerProfile.designerProfile,
         status: state.designerProfile.status,
         updateStatus: state.designerProfile.updateStatus,
-
+        isAuth: state.auth.isAuth,
+        authorizedUserId: state.auth.id,
     }
 }
 class DesignerProfileContainer extends React.Component {
@@ -37,9 +38,8 @@ class DesignerProfileContainer extends React.Component {
                     {...this.props}
                     status={this.props.status}
                     updateStatus={this.props.updateStatus}
+                    designerProfile={this.props.designerProfile}
                 />
-
-
             )
     }
 }

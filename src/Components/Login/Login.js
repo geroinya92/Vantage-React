@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../Redux/Auth-reducer";
 import {Navigate} from "react-router-dom";
 import {mapStateToPropsFactory} from "react-redux/es/connect/mapStateToProps";
+import {Alert, Button} from "@mui/material";
 
 const LoginForm = (props) => {
 
@@ -14,10 +15,11 @@ const LoginForm = (props) => {
             <div><Field name='email' placeholder={'login'} component={Input} validate={[requiredField]}/></div>
             <div><Field name='password' placeholder={'password'} type={'password'} component={Input} validate={[requiredField]}/></div>
             <div><Field name='rememberMe ' type='checkbox' component={Input}/> Remember me</div>
+            {props.error && <Alert severity='error'>{props.error}</Alert>}
             <div>
-                <button type={'submit'}>
+                <Button variant="contained"  type={'submit'}>
                     Login
-                </button>
+                </Button>
             </div>
         </form>
     )

@@ -5,6 +5,7 @@ import MessageItem from "./MessageItem/MessageItem";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../comon/FormsControls/FormsControls";
 import {requiredField} from "../../utilities/Validations/validations";
+import {Button} from "@mui/material";
 
 const ContactForm = (props) => {
     return (
@@ -14,9 +15,9 @@ const ContactForm = (props) => {
                        validate={[requiredField]}/>
             </div>
             <div>
-                <button>
+                <Button variant={'contained'}>
                     Send
-                </button>
+                </Button>
             </div>
 
         </form>
