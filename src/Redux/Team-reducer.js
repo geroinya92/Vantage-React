@@ -101,10 +101,11 @@ export function toggleFollowingProgress(isFetching, designerID) {
     return {type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, designerID}
 }
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
     return ((dispatch) => {
             dispatch(toggleIsFetching(true))
-            usersApi.getUsers(currentPage, pageSize)
+            dispatch(setCurrentPage(page))
+            usersApi.getUsers(page, pageSize)
                 .then(data => {
                     dispatch(toggleIsFetching(false));
                     dispatch(setDesigners(data.items));

@@ -38,7 +38,7 @@ export const getProfile = (userId) => (dispatch) => {
     })
 }
 
-export const getStatus = (userId) => (dispatch) => {
+export const requestStatus = (userId) => (dispatch) => {
     profileApi.getStatus(userId).then(data => {
         dispatch(setStatus(data));
     })
@@ -49,7 +49,7 @@ export const updateStatus = (status) => (dispatch) => {
         .then(data => {
         if (data.resultCode === 0) {
             dispatch(setStatus(status))
-        };
+        }
     })
 }
 

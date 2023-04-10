@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow, getUsers,
+    follow, requestUsers,
     setCurrentPage,
     setDesigners,
     toggleFollowingProgress,
@@ -9,15 +9,23 @@ import {
 } from "../../../../Redux/Team-reducer";
 import TeamPresentation from "./TeamPresentation";
 import {LinearProgress} from "@mui/material";
+import {
+    getDesigners,
+    getPageSize,
+    getTotalUsersCount,
+    getCurrentPage,
+    getIsFetching,
+    getFollowingInProgress,} from '../../../../Redux/Team-selector'
+
 
 function mapStateToProps(state) {
     return {
-        designers: state.teamPage.designers,
-        pageSize: state.teamPage.pageSize,
-        totalUsersCount: state.teamPage.totalUsersCount,
-        currentPage: state.teamPage.currentPage,
-        isFetching: state.teamPage.isFetching,
-        followingInProgress: state.teamPage.followingInProgress,
+        designers: getDesigners(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
 
     }
 }
@@ -65,6 +73,6 @@ export default connect(mapStateToProps,
         setDesigners,
         setCurrentPage,
         toggleFollowingProgress,
-        getUsers,
+        getUsers: requestUsers,
     })
 (Team)

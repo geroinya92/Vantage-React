@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import DesignerProfile from "./DesignerProfile";
-import {getProfile, getStatus, updateStatus} from "../../../../../Redux/DesignerProfile-reducer";
+import {getProfile, requestStatus, updateStatus} from "../../../../../Redux/DesignerProfile-reducer";
 import { useParams } from 'react-router-dom';
 import {compose} from "@reduxjs/toolkit";
 
@@ -45,6 +45,6 @@ class DesignerProfileContainer extends React.Component {
 }
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getProfile, getStatus: requestStatus, updateStatus}),
     withRouter
 )(DesignerProfileContainer)

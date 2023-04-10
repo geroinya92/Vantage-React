@@ -3,7 +3,7 @@ import React from 'react'
 import {compose} from "@reduxjs/toolkit";
 import DesignerProfile from "../About/Service/Team/DesignerProfile/DesignerProfile";
 import {connect} from "react-redux";
-import {getProfile, getStatus, updateStatus} from "../../Redux/DesignerProfile-reducer";
+import {getProfile, requestStatus, updateStatus} from "../../Redux/DesignerProfile-reducer";
 import {withRouter} from "../About/Service/Team/DesignerProfile/DesignerProfileContainer";
 import {withAuthNavigate} from "../../hoc/withAuthNavigate";
 
@@ -40,7 +40,7 @@ class MyProfileContainer extends React.Component {
 }
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getProfile, getStatus: requestStatus, updateStatus}),
     withRouter,
     withAuthNavigate
 )(MyProfileContainer)
